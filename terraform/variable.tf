@@ -13,6 +13,3 @@ variable "public_subnet_cidr_blocks" {
   type        = string
 }
 
-variable "vpc-id" {
-  type = string
-}
