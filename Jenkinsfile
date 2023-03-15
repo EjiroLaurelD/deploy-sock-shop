@@ -18,10 +18,8 @@ pipeline {
         stage("Deploy to EKS") {
             steps {
                 script {
-                    dir('./kubernetes') {
                         sh "aws eks update-kubeconfig --name exam3-eks-cluster"
-                        sh "kubectl apply -f complete-demo.yaml"
-                    }
+                        sh "kubectl apply -f deployment.yaml"
                 }
             }
         }
