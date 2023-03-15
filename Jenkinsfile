@@ -21,6 +21,7 @@ pipeline {
             steps {
                 script {
                         sh "aws eks update-kubeconfig --name myapp-eks-cluster"
+                        sh "kubectl create namespace voting-app"
                         sh "kubectl apply -f deployment.yaml"
                 }
             }
