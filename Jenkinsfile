@@ -11,8 +11,8 @@ pipeline {
             steps {
                 script {
                         sh "aws eks update-kubeconfig --name myapp-eks-cluster"
-                        sh "kubectl apply -f edits.yaml"
-                        sh "kubectl delete -f deployment.yaml"
+                        sh "kubectl delete -f edits.yaml"
+                        sh "kubectl apply -f complete-demo.yaml"
                 }
             }
         }
