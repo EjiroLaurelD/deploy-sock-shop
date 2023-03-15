@@ -34,6 +34,7 @@ metadata:
   labels:
     app: vote
   name: vote
+  namespace: voting-app
 spec:
   type: LoadBalancer
   ports:
@@ -75,6 +76,7 @@ metadata:
   labels:
     app: result
   name: result
+  namespace: voting-app
 spec:
   type: LoadBalancer
   ports:
@@ -123,6 +125,7 @@ metadata:
   labels:
     app: redis
   name: redis
+  namespace: voting-app
 spec:
   type: ClusterIP
   ports:
@@ -176,6 +179,7 @@ metadata:
   labels:
     app: db
   name: db
+  namespace: voting-app
 spec:
   type: ClusterIP
   ports:
