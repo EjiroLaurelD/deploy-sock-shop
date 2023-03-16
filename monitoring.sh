@@ -1,6 +1,7 @@
 #!/bin/bash 
 
 #install helm
+sudo su
 #sudo -n yum install helm
 yum install helm
 
