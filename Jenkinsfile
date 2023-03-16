@@ -10,8 +10,9 @@ pipeline {
         stage("Create an EKS Cluster") {
             steps {
                 script {
-                    dir('terraform'){
-                        sh "terraform destroy -auto-approve" 
+                    dir('./terraform'){
+                        sh "terraform init"
+                        sh "terraform apply -auto-approve" 
                     }                        
                 }
             }
@@ -20,9 +21,10 @@ pipeline {
             steps {
                 script {
                         sh "aws eks update-kubeconfig --name myapp-eks-cluster"
-                        sh "kubectl delete -f deployment.yaml"
-                        sh "kubectl delete -f complete-demo.yaml"
-
+                        sh "kubectl apply -f deployment.yaml"
+                        sh "kubectl apply -f complete-demo.yaml"
+                        sh "kubectl apply -f ./kubernetes/manifests-monitoring/*.yaml"
+                        sh "kubectl apply -f ./kubernetes/manifests-alerting/*.yaml" 
                 }
             }
         }
