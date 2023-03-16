@@ -1,11 +1,7 @@
-locals {
-  cluster_name = "eks-cluster-${var.name}-${data.aws_region.current.name}"
-}
-
 module "eks" {
     source  = "terraform-aws-modules/eks/aws"
     version = "~> 19.0"
-    cluster_name = "local.cluster_name"
+    cluster_name = "myapp-eks-cluster"
     cluster_version = "1.24"
 
     cluster_endpoint_public_access  = true
@@ -28,10 +24,6 @@ module "eks" {
             desired_size = 2
 
             instance_types = ["t2.medium"]
-            capacity_type = ["On-Demand"]
-            labels ={
-                Name = "dev-${var.name}-${data.aws_region.current.name}"
-            }
         }
     }
 }
