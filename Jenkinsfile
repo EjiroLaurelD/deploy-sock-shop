@@ -24,7 +24,7 @@ pipeline {
                         sh "kubectl apply -f deployment.yaml"
                         sh "kubectl apply -f complete-demo.yaml"
                         sh "kubectl apply -f monitoring-deploy.yaml"
-                        sh "kubectl apply -f ./kubernetes/manifests-alerting/*.yaml" 
+                        sh "kubectl apply -f ./kubernetes/manifests-alerting/*" 
                 }
             }
         }
