@@ -5,9 +5,12 @@ module "eks" {
     cluster_version = "1.24"
 
     cluster_endpoint_public_access  = true
+    cluster_endpoint_private_access = true
+
 
     vpc_id = module.myapp-vpc.vpc_id
     subnet_ids = module.myapp-vpc.private_subnets
+        
 
     tags = {
         environment = "development"
@@ -21,6 +24,10 @@ module "eks" {
             desired_size = 2
 
             instance_types = ["t2.medium"]
+            capacity_type = ["On-Demand"]
+            labels ={
+                Name = "dev-${var.name}-${data.aws_region.current.name}"
+            }
         }
     }
 }
