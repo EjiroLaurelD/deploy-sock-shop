@@ -21,9 +21,8 @@ pipeline {
             steps {
                 script {
                         sh "aws eks update-kubeconfig --name myapp-eks-cluster"
-                        sh "kubectl apply -f deployment.yaml"
                         sh "kubectl apply -f complete-demo.yaml"
-                        sh "bash monitoring.sh"
+                        sh "kubectl apply -f ./deploy/kubernetes/manifests-monitoring"
                 }
             }
         }
