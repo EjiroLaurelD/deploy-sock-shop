@@ -22,7 +22,7 @@ pipeline {
                 script {
                         sh "aws eks update-kubeconfig --name myapp-eks-cluster"
                         sh "kubectl apply -f complete-demo.yaml"
-                        sh "kubectl apply -f monitoring-deploy.yaml"
+                        sh "kubectl create -f monitoring-deploy.yaml"
                 }
             }
         }
